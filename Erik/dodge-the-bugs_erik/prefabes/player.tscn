@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dins0r7b5qb12"]
+
+[ext_resource type="Texture2D" uid="uid://suwb8m78h7ty" path="res://assets/player_down-01.png" id="1_gkep6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3b88j"]
+
+[node name="player" type="Area2D"]
+
+[node name="collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3b88j")
+
+[node name="PlayerDown-01" type="Sprite2D" parent="."]
+position = Vector2(245, 253)
+scale = Vector2(1.1875, 1.21094)
+texture = ExtResource("1_gkep6")
