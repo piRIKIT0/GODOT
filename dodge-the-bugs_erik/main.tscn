@@ -1,3 +1,21 @@
-[gd_scene format=3 uid="uid://c6fa4184cqpky"]
+[gd_scene load_steps=3 format=3 uid="uid://c6fa4184cqpky"]
+
+[ext_resource type="PackedScene" uid="uid://dins0r7b5qb12" path="res://prefabes/player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://cns3w5yq4awhu" path="res://prefabes/enemy.tscn" id="2_0xm2m"]
 
 [node name="main" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_ig7tw")]
+position = Vector2(241, 374)
+
+[node name="enemy" parent="." instance=ExtResource("2_0xm2m")]
+position = Vector2(394, 228)
+
+[node name="enemy2" parent="." instance=ExtResource("2_0xm2m")]
+position = Vector2(64, 211)
+
+[node name="enemy3" parent="." instance=ExtResource("2_0xm2m")]
+position = Vector2(387, 616)
+
+[node name="enemy4" parent="." instance=ExtResource("2_0xm2m")]
+position = Vector2(86, 615)
