@@ -1,21 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6fa4184cqpky"]
+[gd_scene load_steps=4 format=3 uid="uid://c6fa4184cqpky"]
 
+[ext_resource type="Script" uid="uid://cwlr5keswh7ms" path="res://scripts/main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dins0r7b5qb12" path="res://prefabes/player.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://cns3w5yq4awhu" path="res://prefabes/enemy.tscn" id="2_0xm2m"]
+
+[sub_resource type="Curve2D" id="Curve2D_ig7tw"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 480, 720, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
 
 [node name="main" type="Node2D"]
+script = ExtResource("1_0xm2m")
 
 [node name="player" parent="." instance=ExtResource("1_ig7tw")]
-position = Vector2(241, 374)
+position = Vector2(241, 360)
 
-[node name="enemy" parent="." instance=ExtResource("2_0xm2m")]
-position = Vector2(394, 228)
+[node name="BugTimer" type="Timer" parent="."]
+wait_time = 0.5
 
-[node name="enemy2" parent="." instance=ExtResource("2_0xm2m")]
-position = Vector2(64, 211)
+[node name="ScoreTimer" type="Timer" parent="."]
 
-[node name="enemy3" parent="." instance=ExtResource("2_0xm2m")]
-position = Vector2(387, 616)
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 
-[node name="enemy4" parent="." instance=ExtResource("2_0xm2m")]
-position = Vector2(86, 615)
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(240, 360)
+
+[node name="BugPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_ig7tw")
+
+[node name="BugPathLocation" type="PathFollow2D" parent="BugPath"]
