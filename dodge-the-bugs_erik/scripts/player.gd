@@ -7,7 +7,7 @@ const SPEED := 400
 @onready var collision = $collision
 
 func _ready():
-	pass 
+	pass
 	
 func _process(delta):
 	var velocity = Input.get_vector("move_left", "move_rigth", "move_up", "move_down")
