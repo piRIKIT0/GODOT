@@ -1,8 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6fa4184cqpky"]
+[gd_scene load_steps=9 format=3 uid="uid://c6fa4184cqpky"]
 
 [ext_resource type="Script" uid="uid://cwlr5keswh7ms" path="res://scripts/main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dins0r7b5qb12" path="res://prefabes/player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://cns3w5yq4awhu" path="res://prefabes/enemy.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bjmawi863ti0e" path="res://prefabes/hud.tscn" id="3_1bvp3"]
+[ext_resource type="Shader" uid="uid://ck4adklnhy8px" path="res://shaders/scrolling_bg.gdshader" id="3_7mycd"]
+[ext_resource type="Texture2D" uid="uid://65on1bknij1r" path="res://assets/bg.png" id="4_272bh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5vw27"]
+shader = ExtResource("3_7mycd")
 
 [sub_resource type="Curve2D" id="Curve2D_ig7tw"]
 _data = {
@@ -13,6 +19,15 @@ point_count = 5
 [node name="main" type="Node2D"]
 script = ExtResource("1_0xm2m")
 bug_scene = ExtResource("2_h2yge")
+
+[node name="BG" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_5vw27")
+offset_right = 480.0
+offset_bottom = 720.0
+texture = ExtResource("4_272bh")
+stretch_mode = 1
+
+[node name="HUD" parent="." instance=ExtResource("3_1bvp3")]
 
 [node name="player" parent="." instance=ExtResource("1_ig7tw")]
 position = Vector2(241, 360)
@@ -34,6 +49,7 @@ curve = SubResource("Curve2D_ig7tw")
 
 [node name="BugPathLocation" type="PathFollow2D" parent="BugPath"]
 
+[connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="hit" from="player" to="." method="game_over"]
 [connection signal="timeout" from="BugTimer" to="." method="_on_bug_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]

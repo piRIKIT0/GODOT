@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjmawi863ti0e"]
+[gd_scene load_steps=4 format=3 uid="uid://bjmawi863ti0e"]
 
+[ext_resource type="Script" uid="uid://dcv2exqtdx1m4" path="res://scripts/hud.gd" id="1_oi7fm"]
 [ext_resource type="FontFile" uid="uid://cwbt2ugsjq30h" path="res://font/Dihil.ttf" id="1_p54uk"]
 [ext_resource type="StyleBox" uid="uid://djkhgg4ved665" path="res://stylebutton.tres" id="2_870ys"]
 
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_oi7fm")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -44,7 +46,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_p54uk")
 theme_override_font_sizes/font_size = 64
-text = "DODGE THE BUGS"
+text = "Dodge The Bugs"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -73,3 +75,10 @@ theme_override_styles/hover = ExtResource("2_870ys")
 theme_override_styles/pressed = ExtResource("2_870ys")
 theme_override_styles/normal = ExtResource("2_870ys")
 text = "Start"
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="pressed" from="Control/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
