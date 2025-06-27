@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://nrv0m685nl6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rtae"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3yj1p"]
+
+[node name="basketball-court" type="Node2D"]
+
+[node name="ground" type="StaticBody2D" parent="."]
+
+[node name="top_ground" type="Sprite2D" parent="ground"]
+
+[node name="bottom_ground2" type="Sprite2D" parent="ground"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground"]
+shape = SubResource("RectangleShape2D_5rtae")
+
+[node name="jordan" type="RigidBody2D" parent="."]
+
+[node name="ref" type="Sprite2D" parent="jordan"]
+
+[node name="Sprite2D" type="Sprite2D" parent="jordan"]
+
+[node name="Sprite2D2" type="Sprite2D" parent="jordan"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jordan"]
+shape = SubResource("RectangleShape2D_3yj1p")
